@@ -63,6 +63,7 @@ if __name__ == '__main__':
 	x = np.linspace(-3, 3, 100).reshape(-1, 1)
 	y = np.sin(x)# + np.random.rand(len(x))
 	plt.plot(x, y)
+
 	t1 = DecisionTreeRegressor(4, 0.001)
 	t1.fit(x, y)
 	plt.plot(x, t1.predict(x))
