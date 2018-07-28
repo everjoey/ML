@@ -68,7 +68,7 @@ if __name__ == '__main__':
 	plt.plot(x, t1.predict(x))
 
 	t2 = tree.DecisionTreeRegressor(max_depth=4, min_impurity_split=0.001)
-	t2.fit(x.reshape(-1, 1), y)
+	t2.fit(x, y)
 	plt.plot(x, t2.predict(x))
 
 	plt.show()
