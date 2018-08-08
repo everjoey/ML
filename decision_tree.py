@@ -28,6 +28,9 @@ class DecisionTreeRegressor(object):
 
 		min_impurity = np.inf
 		for j in range(X.shape[1]):
+			#index = np.argsort(X[:,j])
+			#X[:,j] = X[index,j]
+			#y[:] = y[index]
 			for i in range(X.shape[0] - 1):
 				left = y[0:i+1]
 				right = y[i+1:]
@@ -62,14 +65,21 @@ class DecisionTreeRegressor(object):
 if __name__ == '__main__':
 	x = np.linspace(-3, 3, 100).reshape(-1, 1)
 	y = np.sin(x)# + np.random.rand(len(x))
-	plt.plot(x, y)
+	index = np.arange(len(x))
+	np.random.shuffle(index)
+	#print(x)
+	x = x[index]
+	y = y[index]
+	plt.scatter(x, y)
+	#print(x)
+
 
 	t1 = DecisionTreeRegressor(4, 0.001)
 	t1.fit(x, y)
-	plt.plot(x, t1.predict(x))
+	plt.scatter(x, t1.predict(x))
 
 	t2 = tree.DecisionTreeRegressor(max_depth=4, min_impurity_split=0.001)
 	t2.fit(x, y)
-	plt.plot(x, t2.predict(x))
+	plt.scatter(x, t2.predict(x))
 
 	plt.show()

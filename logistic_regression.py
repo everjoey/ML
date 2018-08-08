@@ -22,7 +22,6 @@ def logistic_regression(x, y):
 
 if __name__ == '__main__':
 	import cProfile
-	import random
 
 	N = 100000
 	wf = np.array([0.3, 0.6, 0.6, 0.3])
